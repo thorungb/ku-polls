@@ -1,7 +1,4 @@
-# Web Polls for Kasetsart University
-
-*ISP STUDENTS: You can copy the STRUCTURE of this file and **some** of the TEXT, but you should also write your own content.*
-
+# KU Polls: Online Survey Questions
 An application for conducting a poll or survey with multiple-choice questions, written in Python using Django. It is based on the [Django tutorial project][django-tutorial], and adds additional functionality.
 
 A polls application for [Individual Software Process](https://cpske.github.io/ISP) course at [Kasetsart University](https://ku.ac.th).
@@ -50,8 +47,7 @@ See [Installation](../../wiki/Installation) in the project wiki.
 
 Sample polls and users data are included. 
 
-* `demo1` password `Hackme1`
-* `demo2` password `Hackme2`
+* `admin` password `adminadmin`
 
 ## Project Documents
 
@@ -60,6 +56,5 @@ All project-related documents are in the [Project Wiki](https://github.com/thoru
 - [Vision Statement](https://github.com/thorungb/ku-polls/wiki/Vision-Statement)
 - [Requirements](https://github.com/thorungb/ku-polls/wiki/Requirements)
 - [Development Plan](https://github.com/thorungb/ku-polls/wiki/Development-Plan)
-- [Iteration 1 Plan](https://github.com/thorungb/ku-polls/wiki/Iteration-1-Plan) and [Task Board](../../projects/1)
-
-[django-tutorial]: https://docs.djangoproject.com/en/3.1/intro/tutorial01/
+- [Iteration 1 Plan](https://github.com/thorungb/ku-polls/wiki/Iteration-1-Plan)
+- [Task Board](https://github.com/users/thorungb/projects/6)
