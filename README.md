@@ -26,4 +26,3 @@ All project-related documents are in the [Project Wiki](https://github.com/thoru
 - [Development Plan](https://github.com/thorungb/ku-polls/wiki/Development-Plan)
 - [Iteration 1 Plan](https://github.com/thorungb/ku-polls/wiki/Iteration-1-Plan)
 - [Task Board](https://github.com/users/thorungb/projects/6)
-- 
