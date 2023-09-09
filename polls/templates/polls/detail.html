@@ -9,4 +9,10 @@
         {% endfor %}
     </fieldset>
     <input type="submit" value="Vote">
-    </form>
+</form>
+
+<!-- Add a link to view results without voting -->
+<p><a href="{% url 'polls:results' question.id %}">View Results</a></p>
+
+<!-- Add a link to go back to the list of polls -->
+<p><a href="{% url 'polls:index' %}">Back to List of Polls</a></p>
