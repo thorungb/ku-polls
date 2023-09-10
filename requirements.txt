@@ -1,5 +1,5 @@
 # Packages required by this application
 Django
-Python
+python
 python-decouple
 flake8
