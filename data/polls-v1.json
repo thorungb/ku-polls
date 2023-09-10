@@ -3,16 +3,18 @@
   "model": "polls.question",
   "pk": 1,
   "fields": {
-    "question_text": "What’s your favorite social media platform?",
-    "pub_date": "2023-09-02T13:20:07Z"
+    "question_text": "In your opinion, what is the most pressing global environmental issue?",
+    "pub_date": "2023-09-09T11:00:10Z",
+    "end_date": null
   }
 },
 {
   "model": "polls.question",
   "pk": 2,
   "fields": {
-    "question_text": "What do you believe is the most pressing global issue today?",
-    "pub_date": "2023-09-02T13:19:59Z"
+    "question_text": "How do you believe governments should prioritize healthcare funding?",
+    "pub_date": "2023-09-08T09:55:04Z",
+    "end_date": "2023-09-09T10:23:26Z"
   }
 },
 {
@@ -20,8 +22,8 @@
   "pk": 1,
   "fields": {
     "question": 1,
-    "choice_text": "Instagram",
-    "votes": 0
+    "choice_text": "Deforestation and Loss of Biodiversity",
+    "votes": 2
   }
 },
 {
@@ -29,7 +31,16 @@
   "pk": 2,
   "fields": {
     "question": 1,
-    "choice_text": "Facebook",
+    "choice_text": "Climate Change and Rising Temperatures",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 3,
+  "fields": {
+    "question": 1,
+    "choice_text": "Air and Water Pollution",
     "votes": 0
   }
 },
@@ -38,8 +49,8 @@
   "pk": 4,
   "fields": {
     "question": 1,
-    "choice_text": "Twitter",
-    "votes": 0
+    "choice_text": "Plastic Pollution in Oceans",
+    "votes": 1
   }
 },
 {
@@ -47,7 +58,7 @@
   "pk": 5,
   "fields": {
     "question": 1,
-    "choice_text": "TikTok",
+    "choice_text": "Overpopulation and Resource Depletion",
     "votes": 0
   }
 },
@@ -55,8 +66,8 @@
   "model": "polls.choice",
   "pk": 6,
   "fields": {
-    "question": 1,
-    "choice_text": "Threads",
+    "question": 2,
+    "choice_text": "Invest more in preventative care and public health programs.",
     "votes": 0
   }
 },
@@ -64,8 +75,8 @@
   "model": "polls.choice",
   "pk": 7,
   "fields": {
-    "question": 1,
-    "choice_text": "Line",
+    "question": 2,
+    "choice_text": "Expand access to affordable healthcare for all citizens.",
     "votes": 0
   }
 },
@@ -73,8 +84,8 @@
   "model": "polls.choice",
   "pk": 8,
   "fields": {
-    "question": 1,
-    "choice_text": "Whatsapp",
+    "question": 2,
+    "choice_text": "Focus on improving mental health services and support.",
     "votes": 0
   }
 },
@@ -83,7 +94,7 @@
   "pk": 9,
   "fields": {
     "question": 2,
-    "choice_text": "Political instability and conflict",
+    "choice_text": "Allocate resources to address healthcare disparities in underserved communities.",
     "votes": 0
   }
 },
@@ -92,34 +103,7 @@
   "pk": 10,
   "fields": {
     "question": 2,
-    "choice_text": "Climate change and environmental sustainability",
-    "votes": 0
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 11,
-  "fields": {
-    "question": 2,
-    "choice_text": "Economic inequality and poverty",
-    "votes": 0
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 12,
-  "fields": {
-    "question": 2,
-    "choice_text": "Education access and equity",
-    "votes": 0
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 13,
-  "fields": {
-    "question": 2,
-    "choice_text": "Healthcare access and quality",
+    "choice_text": "Increase funding for research and development of new medical treatments.",
     "votes": 0
   }
 }
