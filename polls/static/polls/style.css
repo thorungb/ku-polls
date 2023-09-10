@@ -5,3 +5,121 @@ li a {
 body {
     background: white url("images/background.png") no-repeat;
 }
+
+
+/* Add styling for index.html */
+.center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.flashing-title {
+    font-size: 36px;
+    color: #007bff;
+    animation: flash 1s infinite;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.question-container {
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@keyframes flash {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+h2 a {
+    font-size: 28px;
+    color: black;
+    text-decoration: none;
+}
+
+p a {
+    font-size: 16px;
+    color: #aa5c87;
+}
+
+
+/* Add styling for detail.html */
+.detail-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgb(248, 245, 240);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    border-radius: 15px;
+}
+
+.detail-container h1 {
+    font-size: 28px;
+    color: #000000;
+}
+
+.detail-container p {
+    font-size: 18px;
+    color: #cd1111;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.vote-button {
+    text-align: center;
+    margin-top: 10px; /* Adjust the value as needed for spacing */
+}
+.vote-button input[type="submit"] {
+    display: inline-block;
+}
+
+/* Add styling for results.html */
+h1 {
+    text-align: center;
+    margin-top: 5%;
+}
+
+table {
+    border-collapse: collapse;
+    width: 75%;
+    margin: auto;
+}
+
+th {
+    background-color: #5177e7;
+    color: white;
+    text-align: center;
+    font-size: large;
+    padding: 8px;
+}
+
+th, td {
+    border: 2px solid #000000;
+    padding: 8px;
+}
+
+td {
+    text-align: left;
+    background-color: rgb(248, 245, 240);
+    font-weight: bold;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.center-link {
+    text-align: center;
+}
