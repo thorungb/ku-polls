@@ -1,5 +1,4 @@
 # Packages required by this application
-Django
-Python
-python-decouple
-flake8
+Django>=4.2,<5.0
+python-decouple>=3.5,<4.0
+flake8>=3.9,<4.0
