@@ -69,7 +69,6 @@ class QuestionModelTests(TestCase):
         question = create_question(" ", days=-4)
         self.assertEqual(question.is_published(), True)
 
-
     # unit tests for 'can_vote'
     def test_can_vote_with_no_end_date(self):
         """
