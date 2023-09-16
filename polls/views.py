@@ -5,7 +5,7 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import Choice, Question
+from .models import Choice, Question, Vote
 from django.utils import timezone
 
 
@@ -68,6 +68,7 @@ def vote(request, question_id):
             'question': question,
             'error_message': "This poll cannot be voted on at this time!!!"
         })
+    
     try:
         selected_choice = question.choice_set.get(
         pk=request.POST['choice']
@@ -79,11 +80,17 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice.",
             })
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
+        votes = Vote.objects.filter(choice__question=selected_choice.question, user=user)
+        
+        if votes.exists():
+            vote = Vote.objects.get(choice__question=selected_choice.question, user=user)
+            vote.choice = selected_choice
+        else:
+            vote = Vote(choice=selected_choice, user=user)
+        vote.save()
         return HttpResponseRedirect(
-        reverse('polls:results', args=(question.id,))
+            reverse('polls:results', args=(question.id,))
         )
