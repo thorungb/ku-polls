@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import AnonymousUser
 
 from .models import Choice, Question, Vote
 from django.utils import timezone
@@ -39,6 +40,29 @@ class DetailView(generic.DetailView):
         """
         return Question.objects.filter(pub_date__lte=timezone.now())
 
+    def get_previous_choice(self):
+        """
+        Get the previous choice made by the user for the current question.
+        """
+        user = self.request.user
+        if user == AnonymousUser():
+            return None
+
+        question = self.get_object()
+        votes = Vote.objects.filter(choice__question=question,user=user)
+        if votes.exists():
+            return votes.first().choice
+        else:
+            return None
+
+    def get_context_data(self, **kwargs):
+        """
+        Get the context data for rendering the template.
+        """
+        context = super().get_context_data(**kwargs)
+        context['previous_choice'] = self.get_previous_choice()
+        return context
+
 
 class ResultsView(generic.DetailView):
     """
@@ -46,7 +70,6 @@ class ResultsView(generic.DetailView):
     """
     model = Question
     template_name = 'polls/results.html'
-
 
 @login_required
 def vote(request, question_id):
