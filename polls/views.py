@@ -5,6 +5,7 @@ from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import AnonymousUser
+from django.contrib import messages
 
 from .models import Choice, Question, Vote
 from django.utils import timezone
@@ -114,6 +115,9 @@ def vote(request, question_id):
         else:
             vote = Vote(choice=selected_choice, user=user)
         vote.save()
+
+        # Add a success message
+        messages.success(request, " Your vote has been recorded! ")
         return HttpResponseRedirect(
             reverse('polls:results', args=(question.id,))
         )

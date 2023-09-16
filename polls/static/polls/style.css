@@ -92,6 +92,7 @@ h1 {
 }
 
 table {
+    margin-top: 50%;
     border-collapse: collapse;
     width: 75%;
     margin: auto;
@@ -122,4 +123,11 @@ ul {
 
 .center-link {
     text-align: center;
+}
+
+.messages {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(54, 105, 54);
 }
