@@ -2,6 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import Choice, Question
 from django.utils import timezone
@@ -24,7 +26,7 @@ class IndexView(generic.ListView):
         ).order_by('-pub_date')[:5]
 
 
-class DetailView(LoginRequiredMixin, generic.DetailView):
+class DetailView(generic.DetailView):
     """
     View for displaying the details of a specific question.
     """
@@ -46,12 +48,20 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
+@login_required
 def vote(request, question_id):
     """
     View for handling user votes on a question.
     Returns A redirect to the results page or
     a rendering of the detail page with an error message.
     """
+    user = request.user
+    print("current user is", user.id, "login", user.username)
+    print("Real name:", user.first_name, user.last_name)
+    
+    if not user.is_authenticated:
+       return redirect('login')
+    
     question = get_object_or_404(Question, pk=question_id)
     if not question.can_vote():
         return render(request, 'polls/detail.html', {
