@@ -1,0 +1,16 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+
+
+<header>
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+                <li class="right"><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li class="right"><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>

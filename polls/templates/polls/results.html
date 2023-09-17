@@ -2,7 +2,19 @@
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
+{% include 'polls/base.html' %}
+
 <h1>{{ question.question_text }}</h1>
+
+{% if messages %}
+<div class="messages">
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
 
 <table>
     <thead>

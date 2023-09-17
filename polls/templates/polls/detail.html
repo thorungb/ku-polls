@@ -2,6 +2,8 @@
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
+{% include 'polls/base.html' %}
+
 <div class="detail-container">
     <h1>{{ question.question_text }}</h1>
     {% if error_message %} <p class="error-message"><strong>{{ error_message }}</strong></p>{% endif %}
@@ -9,7 +11,10 @@
         {% csrf_token %}
         <fieldset>
             {% for choice in question.choice_set.all %}
-                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"
+                {% if choice.id == previous_choice.id %}
+                  checked
+                {% endif %}>
                 <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
             {% endfor %}
         </fieldset>

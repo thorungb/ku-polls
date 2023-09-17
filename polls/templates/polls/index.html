@@ -2,11 +2,12 @@
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
+{% include 'polls/base.html' %}
+
 {% if user.is_authenticated %}
-   Welcome back, {{ user.username }} 
-{% else %}
-   Please <a href="{% url 'login' %}?next={{request.path}}">Login</a>
+   <p class="welcome-message">Welcome back, {{ user.username }}</p>
 {% endif %}
+
 
 <div class="center-container">
     <h1 class="flashing-title">Welcome to KU Polls</h1>
