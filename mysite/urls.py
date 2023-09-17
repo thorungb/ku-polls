@@ -24,5 +24,5 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('signup/', views.signup, name='signup')
+    path('signup/', views.signup, name='signup'),
 ]

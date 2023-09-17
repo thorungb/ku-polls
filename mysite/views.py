@@ -21,3 +21,4 @@ def signup(request):
         # create a user form and display it the signup page
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
+

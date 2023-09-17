@@ -2,6 +2,8 @@
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
+{% include 'polls/base.html' %}
+
 <div class="detail-container">
     <h1>{{ question.question_text }}</h1>
     {% if error_message %} <p class="error-message"><strong>{{ error_message }}</strong></p>{% endif %}

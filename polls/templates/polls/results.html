@@ -2,6 +2,8 @@
 
 <link rel="stylesheet" href="{% static 'polls/style.css' %}">
 
+{% include 'polls/base.html' %}
+
 <h1>{{ question.question_text }}</h1>
 
 {% if messages %}
