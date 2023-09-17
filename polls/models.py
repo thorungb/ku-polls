@@ -10,7 +10,7 @@ class Question(models.Model):
     """  Represents a poll question and contains the question text, publish date, and end date for voting. """
     objects = None
     question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField("date published")
+    pub_date = models.DateTimeField("date published", default=timezone.now)
     end_date = models.DateTimeField("end date", null=True, blank=True)
 
     def was_published_recently(self) -> bool:
