@@ -8,17 +8,24 @@ A polls application for [Individual Software Process](https://cpske.github.io/IS
 
 Required Python and Django packages are listed in [requirements.txt](./requirements.txt). 
 
+## Installation the Application
+Read and follow the instructions in [Installation the Application](Installation.md).
+
 ## Running the Application
 
-1. Start the server in the virtual environment. 
+1. Start the server in the virtual environment. <br>
+  Activate the virtualenv for this project
+   * On Windows:
+   ``` 
+   venv\Scripts\activate
    ```
-   # activate the virtualenv for this project. On Linux or MacOS:
-   source env/bin/activate
-   # on MS Windows:
-   env\Scripts\activate
-
-   # start the django server
-   python3 manage.py runserver
+   * On macOS and Linux:
+   ``` 
+   source venv/bin/activate
+   ```
+   Start the django server:
+   ```
+   python manage.py runserver
    ```
    This starts a web server listening on port 8000.
 
@@ -29,12 +36,12 @@ Required Python and Django packages are listed in [requirements.txt](./requireme
    ```
    If you get a message that the port is unavailable, then run the server on a different port (1024 thru 65535) such as:
    ```
-   python3 manage.py runserver 12345
+   python manage.py runserver 12345
    ```
 
-3. In a web browser, navigate to <http://localhost:8000>
+2. In a web browser, navigate to <http://localhost:8000>
 
-4. To stop the server, press CTRL-C in the terminal window. Exit the virtual environment by closing the window or by typing:
+3. To stop the server, press CTRL-C in the terminal window. Exit the virtual environment by closing the window or by typing:
    ```
    deactivate
    ```
