@@ -3,8 +3,9 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+# from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import AnonymousUser
+from django.shortcuts import redirect
 from django.contrib import messages
 
 from .models import Choice, Question, Vote
@@ -50,7 +51,7 @@ class DetailView(generic.DetailView):
             return None
 
         question = self.get_object()
-        votes = Vote.objects.filter(choice__question=question,user=user)
+        votes = Vote.objects.filter(choice__question=question, user=user)
         if votes.exists():
             return votes.first().choice
         else:
@@ -72,6 +73,7 @@ class ResultsView(generic.DetailView):
     model = Question
     template_name = 'polls/results.html'
 
+
 @login_required
 def vote(request, question_id):
     """
@@ -82,20 +84,18 @@ def vote(request, question_id):
     user = request.user
     print("current user is", user.id, "login", user.username)
     print("Real name:", user.first_name, user.last_name)
-    
+
     if not user.is_authenticated:
-       return redirect('login')
-    
+        return redirect('login')
     question = get_object_or_404(Question, pk=question_id)
     if not question.can_vote():
         return render(request, 'polls/detail.html', {
             'question': question,
             'error_message': "This poll cannot be voted on at this time!!!"
         })
-    
     try:
         selected_choice = question.choice_set.get(
-        pk=request.POST['choice']
+            pk=request.POST['choice']
         )
     except (KeyError, Choice.DoesNotExist):
         # Redisplay the question voting form.
@@ -107,10 +107,15 @@ def vote(request, question_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-        votes = Vote.objects.filter(choice__question=selected_choice.question, user=user)
-        
+        votes = Vote.objects.filter(
+            choice__question=selected_choice.question,
+            user=user
+        )
         if votes.exists():
-            vote = Vote.objects.get(choice__question=selected_choice.question, user=user)
+            vote = Vote.objects.get(
+                choice__question=selected_choice.question,
+                user=user
+            )
             vote.choice = selected_choice
         else:
             vote = Vote(choice=selected_choice, user=user)

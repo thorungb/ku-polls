@@ -3,11 +3,11 @@ import datetime
 from django.test import TestCase
 from django.utils import timezone
 
-from .models import Question
+# from .models import Question
 from django.urls import reverse
 
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate # to "login" a user using code
+# from django.contrib.auth import authenticate # to "login" a user using code
 from polls.models import Question, Choice, Vote
 from mysite import settings
 
@@ -33,7 +33,7 @@ class QuestionModelTests(TestCase):
         time = timezone.now() + datetime.timedelta(days=30)
         future_question = Question(pub_date=time)
         self.assertIs(future_question.was_published_recently(), False)
-    
+
     def test_was_published_recently_with_old_question(self):
         """
         was_published_recently() returns False for questions whose pub_date
@@ -48,7 +48,9 @@ class QuestionModelTests(TestCase):
         was_published_recently() returns True for questions whose pub_date
         is within the last day.
         """
-        time = timezone.now() - datetime.timedelta(hours=23, minutes=59, seconds=59)
+        time = timezone.now() - datetime.timedelta(
+            hours=23, minutes=59, seconds=59
+        )
         recent_question = Question(pub_date=time)
         self.assertIs(recent_question.was_published_recently(), True)
 
@@ -62,7 +64,7 @@ class QuestionModelTests(TestCase):
 
     def test_is_published_with_the_default_pub_date(self):
         """
-        is_published return True for questions with the default pub_date (i.e., now).
+        is_published return True for questions with the default pub_date.
         """
         question = create_question(" ", days=0)
         self.assertEqual(question.is_published(), True)
@@ -93,7 +95,8 @@ class QuestionModelTests(TestCase):
 
     def test_cannot_vote_before_pub_date(self):
         """
-        Cannot vote if the current date is before the pub_date, even if the end_date is in the future.
+        Cannot vote if the current date is before the pub_date,
+        even if the end_date is in the future.
         """
         question = create_question(question_text=" ", days=5)
         question.end_date = timezone.now() + datetime.timedelta(days=10)
@@ -109,7 +112,7 @@ class QuestionModelTests(TestCase):
         question.save()
         self.assertEqual(question.can_vote(), False)
 
-    
+
 class QuestionIndexViewTests(TestCase):
     def test_no_questions(self):
         """
@@ -174,7 +177,10 @@ class QuestionDetailViewTests(TestCase):
         The detail view of a question with a pub_date in the future
         returns a 404 not found.
         """
-        future_question = create_question(question_text='Future question.', days=5)
+        future_question = create_question(
+            question_text='Future question.',
+            days=5
+        )
         url = reverse('polls:detail', args=(future_question.id,))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
@@ -184,17 +190,22 @@ class QuestionDetailViewTests(TestCase):
         The detail view of a question with a pub_date in the past
         displays the question's text.
         """
-        past_question = create_question(question_text='Past Question.', days=-5)
+        past_question = create_question(
+            question_text='Past Question.',
+            days=-5
+        )
         url = reverse('polls:detail', args=(past_question.id,))
         response = self.client.get(url)
         self.assertContains(response, past_question.question_text)
 
 
 """Tests of authentication."""
+
+
 class UserAuthTest(TestCase):
 
     def setUp(self):
-        # superclass setUp creates a Client object and initializes test database
+        # superclass setUp creates a Client object & initializes test database
         super().setUp()
         self.username = "testuser"
         self.password = "FatChance!"
@@ -209,7 +220,7 @@ class UserAuthTest(TestCase):
         q = Question.objects.create(question_text="First Poll Question")
         q.save()
         # a few choices
-        for n in range(1,4):
+        for n in range(1, 4):
             choice = Choice(choice_text=f"Choice {n}", question=q)
             choice.save()
         self.question = q
@@ -228,13 +239,13 @@ class UserAuthTest(TestCase):
         # user user with a session.  Setting client.user = ... doesn't work.
         # Use Client.login(username, password) to do that.
         # Client.login returns true on success
-        self.assertTrue( 
+        self.assertTrue(
               self.client.login(username=self.username, password=self.password)
                        )
         # visit the logout page
         response = self.client.get(logout_url)
         self.assertEqual(302, response.status_code)
-        
+
         # should redirect us to where? Polls index? Login?
         self.assertRedirects(response, reverse(settings.LOGOUT_REDIRECT_URL))
 
@@ -246,9 +257,7 @@ class UserAuthTest(TestCase):
         self.assertEqual(200, response.status_code)
         # Can login using a POST request
         # usage: client.post(url, {'key1":"value", "key2":"value"})
-        form_data = {"username": "testuser", 
-                     "password": "FatChance!"
-                    }
+        form_data = {"username": "testuser", "password": "FatChance!"}
         response = self.client.post(login_url, form_data)
         # after successful login, should redirect browser somewhere
         self.assertEqual(302, response.status_code)
@@ -279,7 +288,10 @@ class UserAuthTest(TestCase):
 class VoteTestCase(TestCase):
     def setUp(self):
         """Set up initial data for the vote test cases."""
-        self.user = User.objects.create_user(username="testuser", password="password123")
+        self.user = User.objects.create_user(
+            username="testuser",
+            password="password123"
+        )
         self.question = Question.objects.create(
             question_text='Test Question',
             pub_date=timezone.now()
@@ -303,17 +315,18 @@ class VoteTestCase(TestCase):
         # Check if the response status code is a redirect (302)
         self.assertEqual(response.status_code, 302)
         # Check if the user's vote has been recorded in the database
-        self.assertTrue(Vote.objects.filter(user=self.user, choice=self.choice1).exists())
+        self.assertTrue(
+            Vote.objects.filter(user=self.user, choice=self.choice1).exists())
 
     def test_user_cannot_vote_twice(self):
         """Test that a user cannot vote for the same question twice."""
         self.client.login(username="testuser", password="password123")
         vote_url = reverse('polls:vote', args=[self.question.id])
         # Submit a POST request to vote for choice1
-        response = self.client.post(vote_url, {'choice': self.choice1.id})
+        # response = self.client.post(vote_url, {'choice': self.choice1.id})
         # Try to vote for choice2 after already voting for choice1
         response2 = self.client.post(vote_url, {'choice': self.choice2.id})
-        # Check if the response status code is a redirect (302) indicating they can't vote again
+        # Check if the response is a redirect (302) indicating they can't vote
         self.assertEqual(response2.status_code, 302)
 
     def test_anonymous_user_cannot_vote(self):
@@ -321,7 +334,7 @@ class VoteTestCase(TestCase):
         vote_url = reverse('polls:vote', args=[self.question.id])
         # Submit a POST request to vote for choice1 without logging in
         response = self.client.post(vote_url, {'choice': self.choice1.id})
-        # Check if the response status code is a redirect (302) indicating they can't vote
+        # Check if the response is a redirect (302) indicating they can't vote
         self.assertEqual(response.status_code, 302)
 
     def test_voting_redirects_to_results(self):
@@ -332,7 +345,8 @@ class VoteTestCase(TestCase):
         # Submit a POST request to vote for choice1
         response = self.client.post(vote_url, {'choice': self.choice1.id})
         # Check if the response redirects to the results page for the question
-        self.assertRedirects(response, reverse('polls:results', args=[self.question.id]))
+        self.assertRedirects(response,
+                             reverse('polls:results', args=[self.question.id]))
 
     def test_user_can_change_vote(self):
         """Test that a user can change their vote by deleting the old one."""
@@ -341,14 +355,23 @@ class VoteTestCase(TestCase):
         vote_url = reverse('polls:vote', args=[self.question.id])
         response1 = self.client.post(vote_url, {'choice': self.choice1.id})
         # Check that the user voted for choice1
-        self.assertEqual(response1.status_code, 302)  # Redirect after a successful vote
+        self.assertEqual(response1.status_code, 302)
         # Get the user's vote for choice1
-        vote = Vote.objects.filter(choice__question=self.choice1.question, user=self.user)
+        vote = Vote.objects.filter(
+            choice__question=self.choice1.question,
+            user=self.user
+            )
         # Replace 'new_choice' with the choice that user change to
         new_choice = self.choice2
         vote.delete()  # Delete the old vote
         new_vote = Vote.objects.create(choice=new_choice, user=self.user)
         # Ensure that the user's old vote for choice1 is deleted
-        self.assertEqual(Vote.objects.filter(choice=self.choice1, user=self.user).count(), 0)
+        self.assertEqual(
+            Vote.objects.filter(choice=self.choice1, user=self.user).count(),
+            0
+        )
         # Ensure that the user's new vote for 'new_choice' is recorded
-        self.assertEqual(Vote.objects.filter(choice=new_choice, user=self.user).count(), 1)
+        self.assertEqual(
+            Vote.objects.filter(choice=new_choice, user=self.user).count(),
+            1
+        )
