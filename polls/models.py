@@ -13,6 +13,12 @@ class Question(models.Model):
     pub_date = models.DateTimeField("date published", default=timezone.now)
     end_date = models.DateTimeField("end date", null=True, blank=True)
 
+    @admin.display(
+        boolean=True,
+        ordering="pub_date",
+        description="Published recently?",
+    )
+    
     def was_published_recently(self) -> bool:
         """
         Returns True if the question was published within the last day.
