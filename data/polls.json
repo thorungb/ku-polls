@@ -10,10 +10,37 @@
 },
 {
   "model": "polls.question",
-  "pk": 2,
+  "pk": 3,
   "fields": {
-    "question_text": "How do you believe governments should prioritize healthcare funding?",
-    "pub_date": "2023-09-01T08:57:27Z",
+    "question_text": "What's your favorite genre of music?",
+    "pub_date": "2023-09-20T14:42:47Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 4,
+  "fields": {
+    "question_text": "Which is your preferred mode of transportation for commuting to work/school?",
+    "pub_date": "2023-09-16T14:43:33Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 5,
+  "fields": {
+    "question_text": "Which superpower would you choose if you could have one?",
+    "pub_date": "2023-09-10T14:46:03Z",
+    "end_date": null
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 6,
+  "fields": {
+    "question_text": "Which sport do you find the most exciting to watch on television?",
+    "pub_date": "2023-09-22T14:48:17Z",
     "end_date": null
   }
 },
@@ -59,50 +86,282 @@
 },
 {
   "model": "polls.choice",
-  "pk": 6,
+  "pk": 12,
   "fields": {
-    "question": 2,
-    "choice_text": "Invest more in preventative care and public health programs."
+    "question": 1,
+    "choice_text": "Other"
   }
 },
 {
   "model": "polls.choice",
-  "pk": 7,
+  "pk": 13,
   "fields": {
-    "question": 2,
-    "choice_text": "Expand access to affordable healthcare for all citizens."
+    "question": 3,
+    "choice_text": "Rock"
   }
 },
 {
   "model": "polls.choice",
-  "pk": 8,
+  "pk": 14,
   "fields": {
-    "question": 2,
-    "choice_text": "Focus on improving mental health services and support."
+    "question": 3,
+    "choice_text": "Pop"
   }
 },
 {
   "model": "polls.choice",
-  "pk": 9,
-  "fields": {
-    "question": 2,
-    "choice_text": "Allocate resources to address healthcare disparities in underserved communities."
-  }
-},
-{
-  "model": "polls.choice",
-  "pk": 10,
-  "fields": {
-    "question": 2,
-    "choice_text": "Increase funding for research and development of new medical treatments."
-  }
-},
-{
-  "model": "polls.vote",
   "pk": 15,
   "fields": {
-    "user": 3,
-    "choice": 8
+    "question": 3,
+    "choice_text": "Hip-Hop"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 16,
+  "fields": {
+    "question": 3,
+    "choice_text": "Country"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 17,
+  "fields": {
+    "question": 3,
+    "choice_text": "Jazz"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 18,
+  "fields": {
+    "question": 3,
+    "choice_text": "Electronic/Dance"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 19,
+  "fields": {
+    "question": 3,
+    "choice_text": "Classical"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 20,
+  "fields": {
+    "question": 3,
+    "choice_text": "Other"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 21,
+  "fields": {
+    "question": 4,
+    "choice_text": "Car"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 22,
+  "fields": {
+    "question": 4,
+    "choice_text": "Bicycle"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 23,
+  "fields": {
+    "question": 4,
+    "choice_text": "Public Transit (Bus/Train)"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 24,
+  "fields": {
+    "question": 4,
+    "choice_text": "Walking"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 25,
+  "fields": {
+    "question": 4,
+    "choice_text": "Motorcycle/Scooter"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 26,
+  "fields": {
+    "question": 4,
+    "choice_text": "Telecommuting (Working from Home)"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 27,
+  "fields": {
+    "question": 4,
+    "choice_text": "Carpooling/Ridesharing"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 28,
+  "fields": {
+    "question": 4,
+    "choice_text": "Other"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 29,
+  "fields": {
+    "question": 5,
+    "choice_text": "Invisibility"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 30,
+  "fields": {
+    "question": 5,
+    "choice_text": "Time travel"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 31,
+  "fields": {
+    "question": 5,
+    "choice_text": "Super strength"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 32,
+  "fields": {
+    "question": 5,
+    "choice_text": "Telepathy (reading minds)"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 33,
+  "fields": {
+    "question": 5,
+    "choice_text": "Flying"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 34,
+  "fields": {
+    "question": 5,
+    "choice_text": "Shape-shifting"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 35,
+  "fields": {
+    "question": 5,
+    "choice_text": "Healing"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 36,
+  "fields": {
+    "question": 5,
+    "choice_text": "Other"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 37,
+  "fields": {
+    "question": 6,
+    "choice_text": "Football"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 38,
+  "fields": {
+    "question": 6,
+    "choice_text": "Basketball"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 39,
+  "fields": {
+    "question": 6,
+    "choice_text": "Tennis"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 40,
+  "fields": {
+    "question": 6,
+    "choice_text": "Baseball"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 41,
+  "fields": {
+    "question": 6,
+    "choice_text": "Volleyball"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 42,
+  "fields": {
+    "question": 6,
+    "choice_text": "Car racing"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 43,
+  "fields": {
+    "question": 6,
+    "choice_text": "Golf"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 44,
+  "fields": {
+    "question": 6,
+    "choice_text": "eSports"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 45,
+  "fields": {
+    "question": 6,
+    "choice_text": "Badminton"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 46,
+  "fields": {
+    "question": 6,
+    "choice_text": "Other"
   }
 },
 {
@@ -110,7 +369,7 @@
   "pk": 16,
   "fields": {
     "user": 3,
-    "choice": 3
+    "choice": 1
   }
 },
 {
@@ -119,6 +378,46 @@
   "fields": {
     "user": 2,
     "choice": 4
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 18,
+  "fields": {
+    "user": 4,
+    "choice": 35
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 19,
+  "fields": {
+    "user": 3,
+    "choice": 34
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 20,
+  "fields": {
+    "user": 3,
+    "choice": 24
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 21,
+  "fields": {
+    "user": 3,
+    "choice": 19
+  }
+},
+{
+  "model": "polls.vote",
+  "pk": 22,
+  "fields": {
+    "user": 3,
+    "choice": 44
   }
 }
 ]
