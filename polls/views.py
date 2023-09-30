@@ -82,9 +82,6 @@ def vote(request, question_id):
     a rendering of the detail page with an error message.
     """
     user = request.user
-    print("current user is", user.id, "login", user.username)
-    print("Real name:", user.first_name, user.last_name)
-
     if not user.is_authenticated:
         return redirect('login')
     question = get_object_or_404(Question, pk=question_id)
