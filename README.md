@@ -1,3 +1,4 @@
+[![v1.0.0](https://img.shields.io/github/v/tag/thorungb/ku-polls?label=version&color=brightgreen&style=flat-square)](https://github.com/thorungb/ku-polls/releases/tag/v1.0.0)
 [![Django application](https://github.com/thorungb/ku-polls/actions/workflows/django-app.yml/badge.svg?branch=main)](https://github.com/thorungb/ku-polls/actions/workflows/django-app.yml)
 ## KU Polls: Online Survey Questions
 An application for conducting a poll with multiple-choice questions, written in Python using Django. It is based on the [Django tutorial project](https://docs.djangoproject.com/en/4.1/intro/tutorial01/), and adds additional functionality.
