@@ -3,7 +3,7 @@
 ## KU Polls: Online Survey Questions
 An application for conducting a poll with multiple-choice questions, written in Python using Django. It is based on the [Django tutorial project](https://docs.djangoproject.com/en/4.1/intro/tutorial01/), and adds additional functionality.
 
-A polls application for [Individual Software Process 01219241](https://cpske.github.io/ISP) course at [Kasetsart University](https://ku.ac.th).
+A polls application for [Individual Software Process](https://cpske.github.io/ISP) course at [Kasetsart University](https://ku.ac.th).
 
 ## Requirements
 
